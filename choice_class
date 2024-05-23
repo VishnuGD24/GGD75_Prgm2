@@ -1,0 +1,52 @@
+using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
+
+namespace MonsterKiller
+{
+    class Choices
+	{
+        private int SelectedIndex;
+		private string[] PlayerChoices;
+		private string Prompt;
+        public Choices(string[] playerChoices, string prompt)
+		{
+			PlayerChoices = playerChoices;
+			Prompt = prompt;	
+			SelectedIndex = 0;
+		}
+
+		public void DisplayChoices()
+		{
+			Console.WriteLine(Prompt);
+			for(int i = 0; i < PlayerChoices.Length; i++)
+			{
+				string currentChoice = PlayerChoices[i];
+				string prefix;
+				if (i == SelectedIndex) 
+				{
+					prefix = ">";
+					Console.ForegroundColor = ConsoleColor.Black;
+					Console.BackgroundColor = ConsoleColor.White;
+				}
+				else
+				{
+					prefix = "";
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
+				Console.WriteLine($"{prefix} || {currentChoice} ||");
+			}	
+		}
+
+		public int ChosenIndex()
+		{
+			ConsoleKey keyPressed;
+			do
+			{
+
+			} while (keyPressed != ConsoleKey.Enter);
+
+			return SelectedIndex;	
+		}
+	}
+}
