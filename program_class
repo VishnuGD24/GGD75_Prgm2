@@ -1,0 +1,15 @@
+namespace MonsterKiller
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            string prompt = "Welcome to the Monster Killer game. Choose your weapon of choice:" ;
+            string[] weaponChoices = { "Hammer", "Sword", "Axe" };
+
+            Choices choices = new Choices(weaponChoices,prompt);
+            choices.DisplayChoices();
+            
+        }
+    }
+}
