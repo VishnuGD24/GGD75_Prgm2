@@ -1,0 +1,48 @@
+namespace MonsterKiller
+{
+    class Game
+    {
+        private int playerHealth = 100;
+        private int enemyHealth = 150;
+        private int hammerDamage = 10;
+        private int axeDamage = 12;
+        private int swordDamage = 15;
+
+        public void HammerCombat()
+        {
+            string prompt = "You are facing the Monster";
+            string[] combatChoices = { "Attack", "Defend", "Run" };
+            Choices choices = new Choices(combatChoices, prompt);
+            choices.DisplayChoices();
+            ConsoleKey keyPressed;
+            do
+            {
+                choices.DisplayChoices();
+                ConsoleKeyInfo keyInfo = Console.ReadKey();
+                keyPressed = keyInfo.Key;
+
+                if (keyPressed == ConsoleKey.UpArrow)
+                {
+                    choices.SelectedIndex--;
+                    if (choices.SelectedIndex == -1)
+                    {
+                        choices.SelectedIndex = choices.PlayerChoices.Length - 1;
+                    }
+                }
+                else if (keyPressed == ConsoleKey.DownArrow)
+                {
+                    choices.SelectedIndex++;
+                    if (choices.SelectedIndex == choices.PlayerChoices.Length)
+                    {
+                        choices.SelectedIndex = 0;
+                    }
+                }
+
+            } while (keyPressed != ConsoleKey.Enter);
+
+        }
+
+
+
+    }
+}
